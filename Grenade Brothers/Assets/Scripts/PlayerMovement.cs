@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpVelocity = 5f;
     
     private bool isJumping = false;
-    private float movement;        
+    private float movement;
+    private float groundHeight = 0.5894029f;        
 
     void Update() {
         if (isPlayer1) {
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour {
                 rb.velocity = Vector2.up * jumpVelocity;
                 isJumping = true;
             }
+        }
+
+        // Check if the player was pushed below the ground
+        if (rb.position.y == groundHeight) {
+            isJumping = false;
         }
 
         rb.velocity = new Vector2(movement * speed, rb.velocity.y);
