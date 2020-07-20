@@ -10,9 +10,10 @@
 ## Requirements
 - [x] Level creation
 - [x] Player Movement
-- [ ] Tweak Physics (Ball Movement)
-- [ ] Sound Effects
-- [ ] Main Menu
+- [x] Tweak Physics (Ball Movement)
+- [x] Sound Effects
+- [x] Main Menu
+- [ ] Button Animations
 
 ## ScreenShot of Game
 <img src="Screenshot.png" height="300">

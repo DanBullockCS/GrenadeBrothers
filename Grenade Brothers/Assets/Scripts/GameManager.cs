@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     public GameObject Player2Text;
     public GameObject GameMsg;
     public GameObject CountDownMsg;
+    public GameObject endCanvas;
 
     // Scores
     private int Player1Score = 0;
@@ -37,13 +38,24 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(Countdown(3));
     }
     
+    void Start() {
+        if (Player1Score != 7 || Player2Score != 7) {
+            endCanvas.gameObject.SetActive(false);
+        }
+        Time.timeScale = 1.0f;
+        ball.GetComponent<Ball>().ResetPosition();
+        StartCoroutine(Countdown(3));
+    }
+
     void Update() {
         if (Player1Score == 7) {
             GameMsg.GetComponent<TextMeshProUGUI>().text = "Player 1 Wins!";
             Time.timeScale = 0.0f;
+            endCanvas.gameObject.SetActive(true);
         } else if (Player2Score == 7) {
             GameMsg.GetComponent<TextMeshProUGUI>().text = "Player 2 Wins!";
             Time.timeScale = 0.0f;
+            endCanvas.gameObject.SetActive(true);
         }
     }
 

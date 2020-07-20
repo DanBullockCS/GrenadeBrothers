@@ -7,10 +7,10 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     public Rigidbody2D rb;
     public float jumpVelocity = 5f;
-    
+    public float groundLevel = 0.5894029f;
+
     private bool isJumping = false;
     private float movement;
-    private float groundHeight = 0.5894029f;        
 
     void Update() {
         if (isPlayer1) {
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         // Check if the player was pushed below the ground
-        if (rb.position.y == groundHeight) {
+        if (rb.velocity.y < 0 && rb.position.y == groundLevel) {
             isJumping = false;
         }
 

@@ -6,8 +6,19 @@ public class Ball : MonoBehaviour {
     public float speed;
     public Rigidbody2D rb;
 
+    AudioSource aSource;
+    public AudioClip[] audioClips;
+
+    // Sound Related Functions
     void Start() {
-        Launch(); // Launch the Ball at the beginning of the game
+        aSource = gameObject.GetComponent<AudioSource>();
+    }
+    void PlayRandom() {
+        // Play a Random paper ball audio clip
+        if (PlayerPrefs.GetInt("MuteSound") == 0) {
+            aSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+            aSource.Play();
+        }
     }
 
     public void Launch() {
@@ -22,8 +33,22 @@ public class Ball : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
+        PlayRandom();
+
         if (col.gameObject.tag == "Player") {
-            rb.AddForce(transform.up, ForceMode2D.Impulse);
+
+            // Make sure horizontal velocity doesn't get to big, also reset vertical velocity when player hits ball
+            if (rb.velocity.x > 10.0f) {
+                rb.velocity = new Vector2(5.0f, 0.0f);
+            } else if (rb.velocity.y > 10.0f) {
+                rb.velocity = new Vector2(rb.velocity.x, 0.5f);
+            } else {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            }
+
+            // Add the player force
+            rb.AddForce(transform.right, ForceMode2D.Impulse); // X-Axis Force
+            rb.AddForce(transform.up*10, ForceMode2D.Impulse); // Y-Axis Force
         }
     }
 }
