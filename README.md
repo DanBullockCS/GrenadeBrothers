@@ -12,8 +12,8 @@
 - [x] Player Movement
 - [x] Tweak Physics (Ball Movement)
 - [x] Sound Effects
-- [x] Main Menu
-- [ ] Button Animations
+- [x] Menus (Pause/Controls/Main)
+- [x] Button Animations
 
 ## ScreenShot of Game
 <img src="Screenshot.png" height="300">
