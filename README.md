@@ -1,4 +1,8 @@
 # Grenade Brothers
+
+## Play The Game
+- https://danbullock.me/GrenadeBrothers/
+
 ## About The Game
 - A recreation of the "*Grenade Brothers*" minigame from *Hazelight's* game titled "*A Way Out*"
 - Created by Daniel Bullock @DanBullockCS
